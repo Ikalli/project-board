@@ -6,5 +6,4 @@
 * React
 * Redux
 * Firebase
-* Material UI
 * Sass
