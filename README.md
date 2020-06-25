@@ -1,9 +1,8 @@
 # Project-Board
-* SNS형 프로젝트 상황판!!!
-* SNS Project Board!
+* SNS형 게시판
+* SNS posting!
 
 ## Skills
 * React
 * Redux
 * Firebase
-* Sass
