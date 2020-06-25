@@ -1,5 +1,31 @@
 import React from 'react';
 import './App.css';
+import { createStore, combineReducers } from 'redux';
+import boardReducer, {
+  addList,
+  removeList,
+  editList
+} from './board/state';
+import friendReducer, {
+  addFriend,
+  removeFriend
+} from './friend/state';
+
+const reducer = combineReducers({
+  board: boardReducer,
+  friend: friendReducer
+})
+
+const store = createStore(reducer);
+store.subscribe(() => {
+  const state = store.getState();
+  console.log(state);
+})
+
+store.dispatch(addList({ id: 1, desc: 'love coding'}));
+store.dispatch(addList({ id: 2, desc: 'hello world!'}));
+
+store.dispatch(addFriend({ id: 1, name: 'IU'}));
 
 function App() {
   return (
