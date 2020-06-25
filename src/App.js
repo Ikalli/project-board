@@ -24,6 +24,7 @@ store.subscribe(() => {
 
 store.dispatch(addList({ id: 1, desc: 'love coding'}));
 store.dispatch(addList({ id: 2, desc: 'hello world!'}));
+store.dispatch(editList({ id: 1, desc: 'like coding'}));
 
 store.dispatch(addFriend({ id: 1, name: 'IU'}));
 

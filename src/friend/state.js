@@ -1,18 +1,6 @@
-import createReducer from '../common/createReducer';
+import createItemsLogic from '../common/createItemsLogic';
 
-const ADD = "friend/ADD";
-const REMOVE = "friend/REMOVE";
-
-export const addFriend = friend => ({ type: ADD, friend });
-export const removeFriend = friend => ({ type: REMOVE, friend });
-
-const INITIAL_STATE = { friends: [] };
-
-const reducer = createReducer(INITIAL_STATE, {
-	[ADD]: (state, action) => state.friends.push(action.friend),
-	[REMOVE]: (state, action) => state.friends.filter(
-		friend => friend.id !== action.friend.id
-	)
-});
-
+const { add, remove, reducer } = createItemsLogic("friends");
+export const addFriend = add;
+export const removeFriend = remove;
 export default reducer;

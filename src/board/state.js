@@ -1,28 +1,25 @@
 import createReducer from '../common/createReducer';
+import createItemsLogic from '../common/createItemsLogic';
+import mergeReducers from '../common/mergeReducers';
 
-const ADD = 'board/ADD';
-const REMOVE = 'board/REMOVE';
+const { add, remove, reducer: boardReducer } = createItemsLogic("board");
+
 const EDIT = 'board/EDIT';
 
-export const addList = list => ({ type: ADD, list });
-export const removeList = list => ({ type: REMOVE, list });
+export const addList = add;
+export const removeList = remove;
 export const editList = list => ({ type: EDIT, list });
 
-const INITIAL_STATE = { list: [] };
-
-const reducer = createReducer(INITIAL_STATE, {
-	[ADD]: (state, action) => (state.list.push(action.list)),
-	[removeList]: (state, action) => (state.list.filter(
-		list => list.id !== action.list.id
-	)),
+const reducer = createReducer({ board: [] }, {
 	[EDIT]: (state, action) => {
-		const index = state.list.findIndex(
-			list => list.id === action.list.id
+		const index = state.board.findIndex(
+			board => board.id === action.list.id
 		);
 		if (index >= 0) {
-			state.list[index] = action.list;
-		};
+			state.board[index] = action.list;
+		}
 	}
 })
 
-export default reducer;
+const reducers = [reducer, boardReducer];
+export default mergeReducers(reducers);
