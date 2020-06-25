@@ -5,7 +5,7 @@ import boardReducer, {
   addList,
   removeList,
   editList
-} from './board/state';
+} from './post/state';
 import friendReducer, {
   addFriend,
   removeFriend

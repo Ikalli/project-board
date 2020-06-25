@@ -2,21 +2,21 @@ import createReducer from '../common/createReducer';
 import createItemsLogic from '../common/createItemsLogic';
 import mergeReducers from '../common/mergeReducers';
 
-const { add, remove, reducer: boardReducer } = createItemsLogic("board");
+const { add, remove, reducer: boardReducer } = createItemsLogic("post");
 
-const EDIT = 'board/EDIT';
+const EDIT = 'post/EDIT';
 
 export const addList = add;
 export const removeList = remove;
 export const editList = list => ({ type: EDIT, list });
 
-const reducer = createReducer({ board: [] }, {
+const reducer = createReducer({ post: [] }, {
 	[EDIT]: (state, action) => {
-		const index = state.board.findIndex(
-			board => board.id === action.list.id
+		const index = state.post.findIndex(
+			post => post.id === action.list.id
 		);
 		if (index >= 0) {
-			state.board[index] = action.list;
+			state.post[index] = action.list;
 		}
 	}
 })
