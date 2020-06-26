@@ -22,8 +22,8 @@ class PostMain extends React.Component {
 				<button onClick={this.onAdd}>글 추가하기</button>
 				<PostList posts={posts} />
 			</div>
-		)
-	}
+		);
+	};
 }
 
 export default PostMain;
