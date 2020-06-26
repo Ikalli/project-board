@@ -1,6 +1,7 @@
 import React from 'react';
 import store from '../../common/store';
 import { addFriend } from '../state';
+import { getFriend } from '../../common/mockData';
 import FriendList from '../component/FriendList';
 
 class FriendMain extends React.Component {
@@ -16,7 +17,7 @@ class FriendMain extends React.Component {
 	};
 
 	render() {
-		const friends = store.getState.friend.friends;
+		const friends = store.getState().friend.friends;
 		return(
 			<div>
 				<button onClick={onAdd}>친구 추가</button>

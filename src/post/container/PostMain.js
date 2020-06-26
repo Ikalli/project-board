@@ -1,6 +1,7 @@
 import React from 'react';
 import store from '../../common/store';
 import { addPost } from '../state';
+import { getPost } from '../../common/mockData';
 import PostList from '../component/PostList';
 
 class PostMain extends React.Component {

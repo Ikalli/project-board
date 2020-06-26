@@ -10,6 +10,8 @@ import friendReducer, {
   addFriend,
   removeFriend
 } from './friend/state';
+import FriendMain from './friend/container/FriendMain';
+import PostMain from './post/container/PostMain';
 
 const reducer = combineReducers({
   post: postReducer,
@@ -33,9 +35,8 @@ function App() {
     <div className="App">
       <header className="main_header">Project Board</header>
       <section className="main_section">
-  			<article className="todo">Hello</article>
-  			<article className="in_progress">Hello</article>
-  			<article className="done">Hello</article>
+  			<PostMain />
+        <FriendMain />
       </section>
       <footer className="main_footer">개발자:<a href="https://github.com/Ekalii">&nbsp;Ekalii</a></footer>
     </div>
