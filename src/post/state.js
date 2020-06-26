@@ -2,7 +2,7 @@ import createReducer from '../common/createReducer';
 import createItemsLogic from '../common/createItemsLogic';
 import mergeReducers from '../common/mergeReducers';
 
-const { add, remove, reducer: boardReducer } = createItemsLogic("post");
+const { add, remove, reducer: postReducer } = createItemsLogic("post");
 
 const EDIT = 'post/EDIT';
 
@@ -21,5 +21,5 @@ const reducer = createReducer({ post: [] }, {
 	}
 })
 
-const reducers = [reducer, boardReducer];
+const reducers = [reducer, postReducer];
 export default mergeReducers(reducers);
