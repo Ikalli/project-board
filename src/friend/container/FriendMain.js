@@ -13,6 +13,7 @@ class FriendMain extends React.Component {
 	};
 
 	onAdd = () => {
+		const friend = getFriend();
 		store.dispatch(addFriend(friend));
 	};
 
@@ -20,7 +21,7 @@ class FriendMain extends React.Component {
 		const friends = store.getState().friend.friends;
 		return(
 			<div>
-				<button onClick={onAdd}>친구 추가</button>
+				<button onClick={this.onAdd}>친구 추가</button>
 				<FriendList friends={friends} />
 			</div>
 		);

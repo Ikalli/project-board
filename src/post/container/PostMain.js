@@ -13,6 +13,7 @@ class PostMain extends React.Component {
 	};
 
 	onAdd = () => {
+		const post = getPost();
 		store.dispatch(addPost(post));
 	};
 
