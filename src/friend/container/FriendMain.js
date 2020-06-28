@@ -3,28 +3,20 @@ import store from '../../common/store';
 import { addFriend } from '../state';
 import { getFriend } from '../../common/mockData';
 import FriendList from '../component/FriendList';
+import { connect } from 'react-redux';
 
 class FriendMain extends React.PureComponent {
 	state = {
 		friends: store.getState().friend.friends
 	};
 
-	componentDidMount() {
-		this.unsubscribe = store.subscribe(() => this.setState({ 
-			friends: store.getState().friend.friends
-		}));
-	};
-	componentWillUnmount() {
-		this.unsubscribe();
-	};
-
 	onAdd = () => {
 		const friend = getFriend();
-		store.dispatch(addFriend(friend));
+		this.props.addFriend(friend);
 	};
 
 	render() {
-		const friends = store.getState().friend.friends;
+		const { friends } = this.props;
 		return(
 			<div>
 				<button onClick={this.onAdd}>친구 추가</button>
@@ -34,4 +26,19 @@ class FriendMain extends React.PureComponent {
 	};
 }
 
-export default FriendMain;
+const mapStateToProps = state => {
+	return { friends: state.friend.friends };
+};
+
+const mapDispatchToProps = dispatch => {
+	return {
+		addFriend: friend => {
+			dispatch(addFriend(friend))
+		}
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(FriendMain)
