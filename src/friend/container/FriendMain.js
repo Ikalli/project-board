@@ -4,9 +4,15 @@ import { addFriend } from '../state';
 import { getFriend } from '../../common/mockData';
 import FriendList from '../component/FriendList';
 
-class FriendMain extends React.Component {
+class FriendMain extends React.PureComponent {
+	state = {
+		friends: store.getState().friend.friends
+	};
+
 	componentDidMount() {
-		this.unsubscribe = store.subscribe(() => this.forceUpdate());
+		this.unsubscribe = store.subscribe(() => this.setState({ 
+			friends: store.getState().friend.friends
+		}));
 	};
 	componentWillUnmount() {
 		this.unsubscribe();
